@@ -1,0 +1,99 @@
+@page
+@model KennelTollare.Pages.AdminModel
+@{
+    ViewData["Title"] = "Admin — Skogsvikens Tollare";
+    ViewData["AdminPage"] = true;
+}
+@section Head {
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+
+<header class="site-header admin-header">
+    <a class="brand" href="/"><span class="brand-mark">ST</span><span><strong>@Model.Content.Site.Name</strong><small>TOLLARE</small></span></a>
+    <a class="back-link" href="/">← Till hemsidan</a>
+</header>
+
+<main class="admin-main">
+    @if (!Model.IsAuthenticated)
+    {
+        <section class="login-card">
+            <div class="admin-badge">ST / ADMIN</div>
+            <h1>Välkommen tillbaka.</h1>
+            <p>Logga in för att ändra sidan utan att skriva kod.</p>
+            <form method="post" asp-page-handler="Login">
+                <label>Användarnamn<input asp-for="Login.Username" autocomplete="username" placeholder="admin"></label>
+                <label>Lösenord<input asp-for="Login.Password" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+                <button class="button button-dark" type="submit">Logga in <span>↗</span></button>
+                <div asp-validation-summary="All" class="login-error"></div>
+            </form>
+            <p class="demo-hint">Demo: <b>admin</b> / <b>tollare2027</b></p>
+        </section>
+    }
+    else
+    {
+        <div class="admin-topbar">
+            <div><div class="section-kicker">ST / ADMIN</div><h1>Din kennel, enkelt uppdaterad.</h1><p>Ändra texter, bilder och kullar utan att röra någon kod.</p></div>
+            <form method="post" asp-page-handler="Logout"><button class="outline-button">Logga ut</button></form>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Message))
+        {
+            <div class="notice"><span>✓</span><strong>@Model.Message</strong></div>
+        }
+
+        <section class="admin-card">
+            <div class="card-heading"><span class="step">01</span><div><h2>Hemsidans texter & bilder</h2><p>Allt innehåll som syns på startsidan, om oss och kontakt.</p></div></div>
+            <form method="post" asp-page-handler="Save" enctype="multipart/form-data">
+                <input type="hidden" name="section" value="site">
+                <div class="form-row"><label>Kennelnamn<input asp-for="FormContent.Site.Name"></label><label>Plats / rad över rubriken<input asp-for="FormContent.Site.Eyebrow"></label></div>
+                <label>Startens rubrik<input asp-for="FormContent.Site.HeroTitle"></label>
+                <label>Startens introduktion<textarea asp-for="FormContent.Site.HeroIntro" rows="3"></textarea></label>
+                <label>Om oss-rubrik<input asp-for="FormContent.Site.AboutTitle"></label>
+                <label>Om oss-text<textarea asp-for="FormContent.Site.AboutText" rows="3"></textarea></label>
+                <div class="form-row"><label>Kontakt-rubrik<input asp-for="FormContent.Site.ContactTitle"></label><label>Kontakt e-post<input asp-for="FormContent.Site.Email" type="email"></label></div>
+                <label>Kontakttext<textarea asp-for="FormContent.Site.ContactText" rows="3"></textarea></label>
+                <div class="form-row"><label>Ny startsidesbild<input asp-for="HeroImage" type="file" accept="image/*"></label><label>Ny bild för vardagsfliken<input asp-for="DailyImage" type="file" accept="image/*"></label></div>
+                <div class="save-bar"><span>Ändrar även kennelns publika texter.</span><button class="button button-dark" type="submit">Spara text & bilder <span>↗</span></button></div>
+            </form>
+        </section>
+
+        <section class="admin-card">
+            <div class="card-heading"><span class="step">02</span><div><h2>Hundarna</h2><p>Byt bild, namn, år, etiketter och beskrivning.</p></div></div>
+            <form method="post" asp-page-handler="Save" enctype="multipart/form-data">
+                <input type="hidden" name="section" value="dogs">
+                <div class="person-grid">
+                    <div class="person-editor"><h3>Tiken</h3><label>Namn<input asp-for="FormContent.Female.Name"></label><label>År<input asp-for="FormContent.Female.Year"></label><label>Etiketter<input asp-for="FormContent.Female.Tags" placeholder="SE UCH, Viltspår"></label><label>Beskrivning<textarea asp-for="FormContent.Female.Bio" rows="4"></textarea></label><label>Ny bild<input asp-for="FemaleImage" type="file" accept="image/*"></label></div>
+                    <div class="person-editor"><h3>Hanen</h3><label>Namn<input asp-for="FormContent.Male.Name"></label><label>År<input asp-for="FormContent.Male.Year"></label><label>Etiketter<input asp-for="FormContent.Male.Tags" placeholder="Agility, Viltspår"></label><label>Beskrivning<textarea asp-for="FormContent.Male.Bio" rows="4"></textarea></label><label>Ny bild<input asp-for="MaleImage" type="file" accept="image/*"></label></div>
+                </div>
+                <div class="save-bar"><span>Ändringarna sparas på servern.</span><button class="button button-dark" type="submit">Spara hundarna <span>↗</span></button></div>
+            </form>
+        </section>
+
+        <section class="admin-card">
+            <div class="card-heading"><span class="step">03</span><div><h2>Lägg till kull</h2><p>Nya kullar läggs automatiskt överst.</p></div></div>
+            <form method="post" asp-page-handler="AddLitter" enctype="multipart/form-data">
+                <div class="form-row"><label>Namn på kullen<input asp-for="NewLitter.Title" placeholder="Kull 4"></label><label>År<input asp-for="NewLitter.Year" placeholder="2027"></label></div>
+                <div class="form-row"><label>Föräldrar<input asp-for="NewLitter.Parents" placeholder="Iris & Loke"></label><label>Flera bilder<input asp-for="LitterImages" type="file" accept="image/*" multiple></label></div>
+                <div class="form-row"><label>Antal tikvalpar<input asp-for="NewLitter.FemalePuppies" min="0"></label><label>Antal hanvalpar<input asp-for="NewLitter.MalePuppies" min="0"></label></div>
+                <label>Beskrivning<textarea asp-for="NewLitter.Description" rows="4" placeholder="Skriv några rader om kullen..."></textarea></label>
+                <div class="save-bar"><span>Välj gärna flera bilder samtidigt.</span><button class="button button-dark" type="submit">Lägg till kullen <span>↗</span></button></div>
+            </form>
+            <div class="saved-litters">
+                @foreach (var litter in Model.Content.Litters.OrderByDescending(l => l.CreatedAt))
+                {
+                    <div class="saved-litter"><div><strong>@litter.Title</strong><small>@litter.Year · @litter.FemalePuppies tikar · @litter.MalePuppies hanar</small></div></div>
+                }
+            </div>
+        </section>
+
+        <section class="admin-card">
+            <div class="card-heading"><span class="step">04</span><div><h2>Säkerhet</h2><p>Lösenordet sparas som en säker hash i databasen.</p></div></div>
+            <form method="post" asp-page-handler="ChangePassword">
+                <div class="form-row"><label>Nuvarande lösenord<input asp-for="PasswordChange.CurrentPassword" type="password" autocomplete="current-password"></label><label>Nytt lösenord<input asp-for="PasswordChange.NewPassword" type="password" autocomplete="new-password"></label></div>
+                <label>Bekräfta nytt lösenord<input asp-for="PasswordChange.ConfirmPassword" type="password" autocomplete="new-password"></label>
+                <div asp-validation-summary="All" class="login-error"></div>
+                <div class="save-bar"><span>Använd minst 8 tecken.</span><button class="button button-dark" type="submit">Byt lösenord <span>↗</span></button></div>
+            </form>
+        </section>
+    }
+</main>

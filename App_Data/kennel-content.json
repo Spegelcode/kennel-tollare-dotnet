@@ -1,0 +1,96 @@
+{
+  "site": {
+    "name": "Skogsvikens",
+    "eyebrow": "Nova Scotia duck tolling retriever \u00B7 V\u00E4rmland",
+    "heroTitle": "Sm\u00E5 tassar. Stora \u00E4ventyr.",
+    "heroIntro": "En liten, familj\u00E4r kennel d\u00E4r nyfikna tollare f\u00E5r v\u00E4xa upp n\u00E4ra naturen, m\u00E4nniskorna och det som g\u00F6r livet roligt.",
+    "aboutTitle": "En tollare ska f\u00E5 vara b\u00E5de busig och trygg.",
+    "aboutText": "F\u00F6r oss handlar uppf\u00F6dning om mer \u00E4n fina stamtavlor. Det handlar om relationen, vardagen och den d\u00E4r speciella blicken som s\u00E4ger: \u201DVad hittar vi p\u00E5 nu?\u201D",
+    "contactTitle": "Nyfiken p\u00E5 en tollare i livet?",
+    "contactText": "Ber\u00E4tta lite om dig sj\u00E4lv, din vardag och vad du dr\u00F6mmer om att g\u00F6ra tillsammans med din framtida hund. Vi svarar g\u00E4rna p\u00E5 fr\u00E5gor och ber\u00E4ttar mer.",
+    "email": "hej@skogsvikenstollare.se",
+    "heroImage": "/images/iris-tik.png",
+    "dailyImage": "/images/loke-hane.png"
+  },
+  "female": {
+    "name": "Skogsvikens Iris",
+    "year": "2019",
+    "tags": "SE UCH, Viltsp\u00E5r",
+    "bio": "Iris \u00E4r v\u00E5r trygga arbetsmyra med en mjuk sida. \u00C4lskar apportering, skogspromenader och att ligga n\u00E4ra.",
+    "image": "/images/iris-tik.png"
+  },
+  "male": {
+    "name": "R\u00E4vrikets Loke",
+    "year": "2021",
+    "tags": "Agility",
+    "bio": "V\u00E5r glada probleml\u00F6sare och familjens stora clown.",
+    "image": "/images/loke-hane.png"
+  },
+  "litters": [
+    {
+      "id": "ae7fbdef-79d4-40bc-95b8-8627ba93f843",
+      "title": "F\u00F6rsta kullen",
+      "year": "2024",
+      "parents": "Iris \u0026 Loke",
+      "description": "V\u00E5r f\u00F6rsta kull f\u00F6ddes i trygg hemmilj\u00F6 och fick v\u00E4xa upp n\u00E4ra m\u00E4nniskor.",
+      "femalePuppies": 3,
+      "malePuppies": 3,
+      "createdAt": "2026-10-15T19:56:31.8202728Z",
+      "images": [
+        "/images/iris-kull.png",
+        "/images/kull-lek.png",
+        "/images/kull-ute.png",
+        "/images/kull-sov.png",
+        "/images/kull-skog.png",
+        "/images/kull-mys.png",
+        "/images/kull-sjo.png"
+      ],
+      "totalPuppies": 6
+    },
+    {
+      "id": "40bdbd49-c1fe-4953-8654-d9b62ee50765",
+      "title": "\u00C4ngsblomma",
+      "year": "2025",
+      "parents": "Iris \u0026 Loke",
+      "description": "En testkull f\u00F6r att prova kullmenyn och bildspelet.",
+      "femalePuppies": 3,
+      "malePuppies": 3,
+      "createdAt": "2026-10-15T19:56:31.8203436Z",
+      "images": [
+        "/images/kull-lek.png",
+        "/images/kull-skog.png"
+      ],
+      "totalPuppies": 6
+    },
+    {
+      "id": "8c898b03-97ba-4cf0-a288-ac97ee3000ad",
+      "title": "Skogsgl\u00E4ntan",
+      "year": "2026",
+      "parents": "Iris \u0026 Loke",
+      "description": "En testkull f\u00F6r att kontrollera sortering och information.",
+      "femalePuppies": 4,
+      "malePuppies": 3,
+      "createdAt": "2026-10-15T19:56:31.820344Z",
+      "images": [
+        "/images/kull-ute.png",
+        "/images/kull-sjo.png"
+      ],
+      "totalPuppies": 7
+    },
+    {
+      "id": "ba6be043-7615-43ac-b960-b9be74e77cd7",
+      "title": "Morgondagg",
+      "year": "2027",
+      "parents": "Iris \u0026 Loke",
+      "description": "En testkull som ligger \u00F6verst eftersom den lades in senast.",
+      "femalePuppies": 3,
+      "malePuppies": 2,
+      "createdAt": "2026-10-15T19:56:31.8203443Z",
+      "images": [
+        "/images/kull-sov.png",
+        "/images/kull-mys.png"
+      ],
+      "totalPuppies": 5
+    }
+  ]
+}
