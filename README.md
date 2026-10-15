@@ -2,6 +2,14 @@
 
 An ASP.NET Core Razor Pages kennel website written in C#. It demonstrates a public tabbed website, a protected admin area, EF Core, SQLite, secure password hashing, image uploads, automated tests, and deployment-ready publishing.
 
+## GitHub Pages preview
+
+The static public version is deployed from `docs/` through GitHub Actions:
+
+https://spegelcode.github.io/kennel-tollare-dotnet/
+
+GitHub Pages hosts only the public HTML/CSS/JavaScript preview. The ASP.NET Core admin login, SQLite database, and server-side image uploads require an ASP.NET host.
+
 ## Technology
 
 - .NET 8 / ASP.NET Core Razor Pages
